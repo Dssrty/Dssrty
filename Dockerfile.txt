@@ -1,0 +1,18 @@
+```Dockerfile
+# Установка базового образа
+FROM python:3.9-slim
+
+# Установка рабочей директории в /app
+WORKDIR /app
+
+# Копирование зависимостей проекта в рабочую директорию
+COPY requirements.txt .
+
+# Установка зависимостей
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Копирование остальных файлов проекта в рабочую директорию
+COPY . .
+
+# Запуск бота
+CMD ["python", "README.md"]
